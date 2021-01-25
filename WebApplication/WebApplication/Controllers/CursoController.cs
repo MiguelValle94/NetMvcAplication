@@ -25,7 +25,7 @@ namespace WebApplication.Controllers
         }
         public string howAreYouHello(string name, string salutation)
         {
-            return salutation + "How are you " + name;
+            return salutation + " How are you " + name;
         }
 
     }
