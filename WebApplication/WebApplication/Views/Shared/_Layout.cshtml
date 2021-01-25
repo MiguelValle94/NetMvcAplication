@@ -8,12 +8,13 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.8.3.js"></script>
 </head>
-<body>
-    <div class="navbar bg-dark navbar-inverse navbar-fixed-top mt-0">
+<body class="pt-0">
+    <div class="navbar bg-dark navbar-fixed-top mt-0">
         <div class="container">
             <div class="navbar-header">
                 @Html.ActionLink("Curso", "Index", "Curso", new { area = "" }, new { @class = "navbar-brand" })
                 @Html.ActionLink("Period", "Index", "Period", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Section", "Render", "Section", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -22,7 +23,7 @@
         </div>
     </div>
 
-    <div class="container body-content">
+    <div class="container body-content mt-1">
         @RenderBody()
         <hr />
     </div>
