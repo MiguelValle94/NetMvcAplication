@@ -13,5 +13,10 @@ namespace WebApplication.Controllers
         {
             return View();
         }
+
+        public string sayHello()
+        {
+            return "Welcome to the course";
+        }
     }
 }
