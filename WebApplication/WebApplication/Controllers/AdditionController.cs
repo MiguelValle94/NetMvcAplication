@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace WebApplication.Controllers
 {
-    public class PeriodController : Controller
+    public class AdditionController : Controller
     {
         // GET: Period
         public ActionResult Index()
