@@ -28,5 +28,13 @@ namespace WebApplication.Controllers
             return salutation + " How are you " + name;
         }
 
+        public JsonResult listOfCourses()
+        {
+            PruebaDataContext bd = new PruebaDataContext();
+            var list = bd.Curso.Where(p => p.BHABILITADO.Equals(1))
+                .Select(p => new{p.NOMBRE, p.IIDCURSO, p.DESCRIPCION }).ToList();
+
+            return Json(list, JsonRequestBehavior.AllowGet);
+        }
     }
 }
