@@ -13,5 +13,10 @@ namespace WebApplication.Controllers
         {
             return View();
         }
+
+        public ActionResult TableJs()
+        {
+            return View();
+        }
     }
 }
