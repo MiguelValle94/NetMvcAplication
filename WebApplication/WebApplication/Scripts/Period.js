@@ -36,3 +36,19 @@ const createList = (data) => {
         { searching: false }
     )
 }
+
+const searchByName = () => {
+    const name = document.getElementById("txt-name").value
+    $.get("Period/searchPeriodByName/?name=" + name, data => {
+        createList(data)
+    }
+    )
+}
+
+const clearSearch = () => {
+    $.get("Curso/listOfCourses", function (data) {
+        createList(data)
+    })
+
+    document.getElementById("txt-name").value = ""
+}
