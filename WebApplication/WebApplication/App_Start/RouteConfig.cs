@@ -16,7 +16,7 @@ namespace WebApplication
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Table", action = "TableJS", id = UrlParameter.Optional }
+                defaults: new { controller = "Curso", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
