@@ -4,7 +4,7 @@
 
 const createList = (data) => {
     let content = ""
-    content += '<table class="table" id="tabla-curso">'
+    content += '<table class="table" id="table-curso">'
     content += "<thead>"
     content += "<tr>"
     content += "<td>CourseID<td>"
@@ -28,8 +28,22 @@ const createList = (data) => {
 
     document.getElementById("div-table-curso").innerHTML = content
 
-    $("#tabla-curso").dataTable(
+    $("#table-curso").dataTable(
         {searching: false}
     )
 }
 
+const searchByName = () => {
+    const name = document.getElementById("txt-name").value
+    $.get("Curso/searchCourseByName/?name=" + name, data => {
+        createList(data)
+    }
+    )
+}
+const clearSearch = () => {
+    $.get("Curso/listOfCourses", function (data) {
+        createList(data)
+    })
+
+    document.getElementById("txt-name").value = ""
+}
