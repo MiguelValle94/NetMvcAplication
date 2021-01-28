@@ -46,7 +46,7 @@ const searchByName = () => {
 }
 
 const clearSearch = () => {
-    $.get("Curso/listOfCourses", function (data) {
+    $.get("Period/listPeriod", function (data) {
         createList(data)
     })
 
