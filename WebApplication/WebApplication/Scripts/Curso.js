@@ -40,6 +40,7 @@ const searchByName = () => {
     }
     )
 }
+
 const clearSearch = () => {
     $.get("Curso/listOfCourses", function (data) {
         createList(data)

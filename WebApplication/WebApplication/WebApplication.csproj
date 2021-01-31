@@ -93,6 +93,7 @@
   <ItemGroup>
     <Content Include="Content\datatables.css" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\Alumno.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />

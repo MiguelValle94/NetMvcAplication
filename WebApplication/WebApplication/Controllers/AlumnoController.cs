@@ -14,7 +14,7 @@ namespace WebApplication.Controllers
             return View();
         }
 
-        public JsonResult listAlumns()
+        public JsonResult listStudents()
         {
             PruebaDataContext bd = new PruebaDataContext();
             var list = bd.Alumno.Where(p => p.BHABILITADO.Equals(1))
