@@ -92,6 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\datatables.css" />
+    <Content Include="Content\jquery-ui.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\Alumno.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -126,6 +127,7 @@
     <Content Include="Scripts\jquery-3.0.0.min.js" />
     <Content Include="Scripts\jquery-3.0.0.slim.js" />
     <Content Include="Scripts\jquery-3.0.0.slim.min.js" />
+    <Content Include="Scripts\jquery-ui.min.js" />
     <Content Include="Scripts\Period.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />

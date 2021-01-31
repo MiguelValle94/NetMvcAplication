@@ -1,4 +1,6 @@
-﻿$.get("Period/listPeriod", data => {
+﻿$(".datepicker").datepicker()
+
+$.get("Period/listPeriod", data => {
     createList(data)
 }
 )
