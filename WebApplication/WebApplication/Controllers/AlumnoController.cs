@@ -26,7 +26,7 @@ namespace WebApplication.Controllers
         {
             PruebaDataContext bd = new PruebaDataContext();
             var list = bd.Sexo.Where(p => p.BHABILITADO.Equals(1))
-                .Select(p => new { p.NOMBRE, p.IIDSEXO }).ToList();
+                .Select(p => new { p.NOMBRE, IID = p.IIDSEXO }).ToList();
             return Json(list, JsonRequestBehavior.AllowGet);
         }
     }
