@@ -1,4 +1,10 @@
-﻿$(".datepicker").datepicker()
+﻿$(".datepicker").datepicker(
+    {
+        dateFormat: "dd/mm/yy",
+        changeMonth: true,
+        changeYear: true
+    }
+)
 
 $.get("Period/listPeriod", data => {
     createList(data)

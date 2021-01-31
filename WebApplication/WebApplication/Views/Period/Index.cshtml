@@ -17,14 +17,14 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Periodo:</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-                <table>
+                <table style="margin: auto">
                     <tr>
                         <td width="30%">ID</td>
-                        <td width="70%"><input type="text" id="txt-id-period" /></td>
+                        <td width="70%"><input type="text" id="txt-id-period" readonly /></td>
                     </tr>
                     <tr>
                         <td width="30%">Nombre</td>
@@ -32,16 +32,17 @@
                     </tr>
                     <tr>
                         <td width="30%">Inicio</td>
-                        <td width="70%"><input type="text" class="datepicker" /></td>
+                        <td width="70%"><input type="text" class="datepicker" id="txt-start-period" /></td>
                     </tr>
                     <tr>
                         <td width="30%">Fin</td>
-                        <td width="70%"><input type="text" class="datepicker" /></td>
+                        <td width="70%"><input type="text" class="datepicker" id="txt-end-period"/></td>
                     </tr>
                 </table>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal">Guardar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
             </div>
         </div>
 
