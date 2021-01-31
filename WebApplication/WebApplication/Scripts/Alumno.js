@@ -64,3 +64,9 @@ const filterByGender = () => {
         })
     }
 }
+
+const clearData = () => {
+    $.get("Alumno/listStudents", function (data) {
+        createList(data)
+    })
+}
