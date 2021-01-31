@@ -51,3 +51,16 @@ const populateCbo = (data, control) => {
     }
     control.innerHTML = content
 }
+
+const filterByContract = () => {
+    const value = document.getElementById("cbo-contract").value
+    if (value === "0") {
+        $.get("Docente/listTeachers", (data) => {
+            createList(data)
+        })
+    } else {
+        $.get(`Docente/filterByContract/?iidcontrato=${value}`, (data) => {
+            createList(data)
+        })
+    }
+}
