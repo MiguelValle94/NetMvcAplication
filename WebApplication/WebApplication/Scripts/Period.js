@@ -9,10 +9,10 @@ const createList = (data) => {
     content += "<thead>"
     content += "<tr>"
     content += "<td>PeriodID</td>"
-    content += "<td>NOMBRE</td>"
-    content += "<td>FECHA INICIO</td>"
-    content += "<td>FECHA FIN</td>"
-    content += "<td>ACCIONES</td>"
+    content += "<td>Nombre</td>"
+    content += "<td>Fecha Inicio</td>"
+    content += "<td>Fecha Fin</td>"
+    content += "<td>Acciones</td>"
     content += "</tr>"
     content += "</thead>"
 
@@ -23,6 +23,7 @@ const createList = (data) => {
         content += `<td>${data[i].NOMBRE}</td>`
         content += `<td>${data[i].FECHAINICIO}</td>`
         content += `<td>${data[i].FECHAFIN}</td>`
+        content += "<td><button class='btn btn-primary'>E</button><button class='btn btn-danger'>X</button></td>"
         content += "</tr>"
     }
     content += "</tbody>"

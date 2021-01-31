@@ -12,6 +12,7 @@ const createList = (data) => {
     content += "<td>Primer Apellido</td>"
     content += "<td>Segundo Apellido</td>"
     content += "<td>Contacto</td>"
+    content += "<td>Acciones</td>"
     content += "</tr>"
     content += "</thead>"
 
@@ -23,6 +24,7 @@ const createList = (data) => {
         content += `<td>${data[i].APPATERNO}</td>`
         content += `<td>${data[i].APMATERNO}</td>`
         content += `<td>${data[i].EMAIL}</td>`
+        content += "<td><button class='btn btn-primary'>E</button><button class='btn btn-danger'>X</button></td>"
         content += "</tr>"
     }
     content += "</tbody>"
