@@ -1,4 +1,4 @@
-﻿$.get("Curso/listOfCourses", function (data) {
+﻿$.get("Curso/listOfCourses", (data) => {
     createList(data)
 })
 
@@ -42,7 +42,7 @@ const searchByName = () => {
 }
 
 const clearSearch = () => {
-    $.get("Curso/listOfCourses", function (data) {
+    $.get("Curso/listOfCourses", (data) => {
         createList(data)
     })
 

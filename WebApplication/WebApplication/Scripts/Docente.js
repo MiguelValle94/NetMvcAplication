@@ -1,4 +1,4 @@
-﻿$.get("Docente/listTeachers", function (data) {
+﻿$.get("Docente/listTeachers", (data) => {
     createList(data)
 })
 
@@ -37,4 +37,17 @@ const createList = (data) => {
     $("#table-curso").dataTable(
         { searching: false }
     )
+}
+
+$.get("Docente/listContracts", (data) => {
+    populateCbo(data, document.getElementById("cbo-contract"))
+})
+
+const populateCbo = (data, control) => {
+    let content
+    content += "<option value='0'>--Seleccione--</option>"
+    for (let i = 0; i < data.length; i++) {
+        content += `<option value="${data[i].IID}">${data[i].NOMBRE}</option>`
+    }
+    control.innerHTML = content
 }

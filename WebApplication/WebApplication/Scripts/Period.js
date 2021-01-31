@@ -46,7 +46,7 @@ const searchByName = () => {
 }
 
 const clearSearch = () => {
-    $.get("Period/listPeriod", function (data) {
+    $.get("Period/listPeriod", (data) => {
         createList(data)
     })
 

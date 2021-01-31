@@ -21,5 +21,13 @@ namespace WebApplication.Controllers
                 .Select(p => new { p.NOMBRE, p.IIDDOCENTE, p.APPATERNO, p.APMATERNO, p.EMAIL }).ToList();
             return Json(list, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult listContracts()
+        {
+            PruebaDataContext bd = new PruebaDataContext();
+            var list = bd.ModalidadContrato.Where(p => p.BHABILITADO.Equals(1))
+                .Select(p => new { p.NOMBRE, IID = p.IIDMODALIDADCONTRATO }).ToList();
+            return Json(list, JsonRequestBehavior.AllowGet);
+        }
     }
 }

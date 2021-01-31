@@ -1,4 +1,4 @@
-﻿$.get("Alumno/listStudents", function (data) {
+﻿$.get("Alumno/listStudents", (data) => {
     createList(data)
 })
 
@@ -39,7 +39,7 @@ const createList = (data) => {
     )
 }
 
-$.get("Alumno/listGender", function (data) {
+$.get("Alumno/listGender", (data) => {
     populateCbo(data, document.getElementById("cbo-gender"))
 })
 
@@ -55,18 +55,18 @@ const populateCbo = (data, control) => {
 const filterByGender = () => {
     const value = document.getElementById("cbo-gender").value
     if (value === "0") {
-        $.get("Alumno/listStudents", function (data) {
+        $.get("Alumno/listStudents", (data) => {
             createList(data)
         })
     } else {
-        $.get(`Alumno/filterByGender/?iidsexo=${value}`, function (data) {
+        $.get(`Alumno/filterByGender/?iidsexo=${value}`, (data) => {
             createList(data)
         })
     }
 }
 
 const clearData = () => {
-    $.get("Alumno/listStudents", function (data) {
+    $.get("Alumno/listStudents", (data) => {
         createList(data)
     })
 }
