@@ -8,10 +8,11 @@ const createList = (data) => {
     content += '<table class="table" id="table-period">'
     content += "<thead>"
     content += "<tr>"
-    content += "<td>PeriodID<td>"
-    content += "<td>Nombre<td>"
-    content += "<td>FECHA INICIO<td>"
-    content += "<td>FECHA FIN<td>"
+    content += "<td>PeriodID</td>"
+    content += "<td>NOMBRE</td>"
+    content += "<td>FECHA INICIO</td>"
+    content += "<td>FECHA FIN</td>"
+    content += "<td>ACCIONES</td>"
     content += "</tr>"
     content += "</thead>"
 
@@ -19,11 +20,8 @@ const createList = (data) => {
     for (let i = 0; i < data.length; i++) {
         content += "<tr>"
         content += `<td>${data[i].IIDPERIODO}</td>`
-        content += `<td></td>`
         content += `<td>${data[i].NOMBRE}</td>`
-        content += `<td></td>`
         content += `<td>${data[i].FECHAINICIO}</td>`
-        content += `<td></td>`
         content += `<td>${data[i].FECHAFIN}</td>`
         content += "</tr>"
     }

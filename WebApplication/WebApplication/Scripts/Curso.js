@@ -7,9 +7,9 @@ const createList = (data) => {
     content += '<table class="table" id="table-curso">'
     content += "<thead>"
     content += "<tr>"
-    content += "<td>CourseID<td>"
-    content += "<td>Nombre<td>"
-    content += "<td>Descripcion<td>"
+    content += "<td>CourseID</td>"
+    content += "<td>Nombre</td>"
+    content += "<td>Descripcion</td>"
     content += "</tr>"
     content += "</thead>"
 
@@ -17,9 +17,7 @@ const createList = (data) => {
     for (let i = 0; i < data.length; i++) {
         content += "<tr>"
         content += `<td>${data[i].IIDCURSO}</td>`
-        content += `<td></td>`
         content += `<td>${data[i].NOMBRE}</td>`
-        content += `<td></td>`
         content += `<td>${data[i].DESCRIPCION}</td>`
         content += "</tr>"
     }
