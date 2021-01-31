@@ -45,7 +45,7 @@ $.get("Alumno/listGender", function (data) {
 
 const populateCbo = (data, control) => {
     let content
-    content += "<option>--Seleccione--</option>"
+    content += "<option value='0'>--Seleccione--</option>"
     for (let i = 0; i < data.length; i++) {
         content += `<option value="${data[i].IID}">${data[i].NOMBRE}</option>`
     }
@@ -53,7 +53,14 @@ const populateCbo = (data, control) => {
 }
 
 const filterByGender = () => {
-    $.get(`Alumno/filterByGender/?iidsexo=${document.getElementById("cbo-gender").value}`, function(data) {
-        createList(data)
-    })
+    const value = document.getElementById("cbo-gender").value
+    if (value === "0") {
+        $.get("Alumno/listStudents", function (data) {
+            createList(data)
+        })
+    } else {
+        $.get(`Alumno/filterByGender/?iidsexo=${value}`, function (data) {
+            createList(data)
+        })
+    }
 }
