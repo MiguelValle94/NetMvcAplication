@@ -18,7 +18,7 @@ const createList = (data) => {
     content += "<tbody>"
     for (let i = 0; i < data.length; i++) {
         content += "<tr>"
-        content += `<td>${data[i].IIDOCENTE}</td>`
+        content += `<td>${data[i].IIDDOCENTE}</td>`
         content += `<td></td>`
         content += `<td>${data[i].NOMBRE}</td>`
         content += `<td></td>`
