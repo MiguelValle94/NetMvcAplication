@@ -100,6 +100,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\Curso.js" />
     <Content Include="Scripts\datatables.min.js" />
+    <Content Include="Scripts\Docente.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -142,6 +143,7 @@
     <Compile Include="Controllers\AlumnoController.cs" />
     <Compile Include="Controllers\CursoController.cs" />
     <Compile Include="Controllers\AdditionController.cs" />
+    <Compile Include="Controllers\DocenteController.cs" />
     <Compile Include="Controllers\PeriodController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -176,6 +178,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Period\Index.cshtml" />
     <Content Include="Views\Alumno\Index.cshtml" />
+    <Content Include="Views\Docente\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
