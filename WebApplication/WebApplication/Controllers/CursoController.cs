@@ -14,20 +14,6 @@ namespace WebApplication.Controllers
             return View();
         }
 
-        public string sayHello()
-        {
-            return "Welcome to the course";
-        }
-
-        public string howAreYou(string name)
-        {
-            return "How are you " + name;
-        }
-        public string howAreYouHello(string name, string salutation)
-        {
-            return salutation + " How are you " + name;
-        }
-
         public JsonResult listOfCourses()
         {
             PruebaDataContext bd = new PruebaDataContext();

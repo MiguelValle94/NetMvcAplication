@@ -3,13 +3,84 @@
     ViewBag.Title = "Index";
 }
 <link href="~/Content/datatables.css" rel="stylesheet" />
+<link href="~/Content/jquery-ui.min.css" rel="stylesheet" />
 
 <h2>Docentes:</h2>
 <label>Seleccione modalidad contrato:</label>
 <select id="cbo-contract" onchange="filterByContract()"></select>
+<br />
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Agregar</button>
 
 <div id="div-table-docente"></div>
 
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Curso:</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <table style="margin: auto">
+                    <tr>
+                        <td width="30%">ID</td>
+                        <td width="70%"><input type="text" id="txt-id-docente" readonly /></td>
+                    </tr>
+                    <tr>
+                        <td width="30%">Nombre</td>
+                        <td width="70%"><input type="text" id="txt-name-docente" /></td>
+                    </tr>
+                    <tr>
+                        <td width="30%">Primer Apellido</td>
+                        <td width="70%"><input type="text" id="txt-firstsurname-alumno" /></td>
+                    </tr>
+                    <tr>
+                        <td width="30%">Segundo Apellido</td>
+                        <td width="70%"><input type="text" id="txt-secondsurname-alumno" /></td>
+                    </tr>
+                    <tr>
+                        <td width="30%">Dirección</td>
+                        <td width="70%"><input type="text" id="txt-address-docente" /></td>
+                    </tr>
+                    <tr>
+                        <td width="30%">Teléfono Fijo</td>
+                        <td width="70%"><input type="number" id="num-phone-docente" /></td>
+                    </tr>
+                    <tr>
+                        <td width="30%">Teléfono Móvil</td>
+                        <td width="70%"><input type="number" id="num-mobile-docente" /></td>
+                    </tr>
+                    <tr>
+                        <td width="30%">Email</td>
+                        <td width="70%"><input type="email" class="datepicker" id="txt-email-docente" /></td>
+                    </tr>
+                    <tr>
+                        <td width="30%">Género</td>
+                        <td width="70%"><select id="cbo-gender-docente"></select></td>
+                    </tr>
+                    <tr>
+                        <td width="30%">Fecha contrato</td>
+                        <td width="70%"><input type="text" class="datepicker" id="txt-contractdate-docente" /></td>
+                    </tr>
+                    <tr>
+                        <td width="30%">Contrato</td>
+                        <td width="70%"><select id="cbo-contract-docente"></select></td>
+                    </tr>
+                    <tr>
+                        <td width="30%">Foto</td>
+                        <td width="70%"><img width="100" height="100" style="border: 1px solid black" id="img-photo-docente"/></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Guardar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="~/Scripts/jquery-ui.min.js"></script>
 <script src="~/Scripts/Docente.js"></script>
 <script src="~/Scripts/datatables.min.js"></script>

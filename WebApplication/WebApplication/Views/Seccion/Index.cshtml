@@ -5,13 +5,11 @@
 <link href="~/Content/datatables.css" rel="stylesheet" />
 <link href="~/Content/jquery-ui.min.css" rel="stylesheet" />
 
-<h2>Periodos:</h2>
-<input type="text" id="txt-name" placeholder="Busque por nombre" onkeyup="searchByName()" />
-<input type="button" id="btn-name" class="btn btn-danger" value="X" onclick="clearSearch()" />
+<h2>Sección:</h2>
 <br />
 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Agregar</button>
 
-<div id="div-table-period"></div>
+<div id="div-table-seccion"></div>
 
 <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -24,19 +22,11 @@
                 <table style="margin: auto">
                     <tr>
                         <td width="30%">ID</td>
-                        <td width="70%"><input type="text" id="txt-id-period" readonly /></td>
+                        <td width="70%"><input type="text" id="txt-id-seccion" readonly /></td>
                     </tr>
                     <tr>
                         <td width="30%">Nombre</td>
-                        <td width="70%"><input type="text" id="txt-name-period" /></td>
-                    </tr>
-                    <tr>
-                        <td width="30%">Inicio</td>
-                        <td width="70%"><input type="text" class="datepicker" id="txt-start-period" /></td>
-                    </tr>
-                    <tr>
-                        <td width="30%">Fin</td>
-                        <td width="70%"><input type="text" class="datepicker" id="txt-end-period"/></td>
+                        <td width="70%"><input type="text" id="txt-name-seccion" /></td>
                     </tr>
                 </table>
             </div>
@@ -50,5 +40,5 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="~/Scripts/jquery-ui.min.js"></script>
-<script src="~/Scripts/Period.js"></script>
+<script src="~/Scripts/Seccion.js"></script>
 <script src="~/Scripts/datatables.min.js"></script>
