@@ -45,6 +45,7 @@ $.get("Alumno/listByGender", function (data) {
 
 const populateCbo = (data, control) => {
     let content
+    content += "<option>--Seleccione--</option>"
     for (let i = 0; i < data.length; i++) {
         content += `<option value="${data[i].IID}">${data[i].NOMBRE}</option>`
     }
