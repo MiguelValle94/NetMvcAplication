@@ -39,7 +39,7 @@ const createList = (data) => {
     )
 }
 
-$.get("Alumno/listByGender", function (data) {
+$.get("Alumno/listGender", function (data) {
     populateCbo(data, document.getElementById("cbo-gender"))
 })
 
@@ -50,4 +50,10 @@ const populateCbo = (data, control) => {
         content += `<option value="${data[i].IID}">${data[i].NOMBRE}</option>`
     }
    control.innerHTML = content
+}
+
+const filterByGender = () => {
+    $.get(`Alumno/filterByGender/?iidsexo=${document.getElementById("cbo-gender").value}`, function(data) {
+        createList(data)
+    })
 }

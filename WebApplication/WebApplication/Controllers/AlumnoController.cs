@@ -22,11 +22,19 @@ namespace WebApplication.Controllers
             return Json(list, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult listByGender()
+        public JsonResult listGender()
         {
             PruebaDataContext bd = new PruebaDataContext();
             var list = bd.Sexo.Where(p => p.BHABILITADO.Equals(1))
                 .Select(p => new { p.NOMBRE, IID = p.IIDSEXO }).ToList();
+            return Json(list, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult filterByGender(int iidsexo)
+        {
+            PruebaDataContext bd = new PruebaDataContext();
+            var list = bd.Alumno.Where(p => p.BHABILITADO.Equals(1) && p.IIDSEXO.Equals(iidsexo))
+                .Select(p => new { p.NOMBRE, p.IIDALUMNO, p.APPATERNO, p.APMATERNO, p.TELEFONOPADRE }).ToList();
             return Json(list, JsonRequestBehavior.AllowGet);
         }
     }
