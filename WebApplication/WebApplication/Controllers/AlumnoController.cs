@@ -21,5 +21,13 @@ namespace WebApplication.Controllers
                 .Select(p => new { p.NOMBRE, p.IIDALUMNO, p.APPATERNO,p.APMATERNO, p.TELEFONOPADRE }).ToList();
             return Json(list, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult listByGender()
+        {
+            PruebaDataContext bd = new PruebaDataContext();
+            var list = bd.Sexo.Where(p => p.BHABILITADO.Equals(1))
+                .Select(p => new { p.NOMBRE, p.IIDSEXO }).ToList();
+            return Json(list, JsonRequestBehavior.AllowGet);
+        }
     }
 }
