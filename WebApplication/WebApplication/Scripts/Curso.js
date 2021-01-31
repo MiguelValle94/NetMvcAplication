@@ -20,7 +20,7 @@ const createList = (data) => {
         content += `<td>${data[i].IIDCURSO}</td>`
         content += `<td>${data[i].NOMBRE}</td>`
         content += `<td>${data[i].DESCRIPCION}</td>`
-        content += "<td><button class='btn btn-primary'>E</button><button class='btn btn-danger'>X</button></td>"
+        content += "<td><button class='btn btn-primary' data-toggle='modal' data-target='#myModal'>E</button><button class='btn btn-danger'>X</button></td>"
         content += "</tr>"
     }
     content += "</tbody>"
