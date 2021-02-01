@@ -38,5 +38,30 @@ namespace WebApplication.Controllers
                 .Select(p => new { p.NOMBRE, p.IIDCURSO, p.DESCRIPCION }).ToList();
             return Json(list, JsonRequestBehavior.AllowGet);
         }
+
+        public int saveData (Curso curso)
+        {
+            PruebaDataContext bd = new PruebaDataContext();
+            int afectedData = 0;
+
+            try
+            {
+                if (curso.IIDCURSO == 0)
+                {
+                    bd.Curso.InsertOnSubmit(curso);
+                    bd.SubmitChanges();
+                    afectedData = 1;
+                } 
+                else {
+
+                }
+            }
+            catch (Exception ex)
+            {
+                afectedData = 0;
+            }
+
+            return afectedData;
+        }
     }
 }

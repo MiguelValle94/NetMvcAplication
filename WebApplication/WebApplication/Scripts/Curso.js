@@ -34,6 +34,10 @@ const createList = (data) => {
 }
 
 const openModal = (id) => {
+    const controllers = document.getElementsByClassName("mandatory")
+    for (let i = 0; i < controllers.length; i++) {
+        controllers[i].parentNode.classList.remove("error")
+     }
     if (id === 0) {
         deleteInputs()
     } else {
@@ -69,16 +73,50 @@ const deleteInputs = () => {
 }
 
 const sendData = () => {
-    mandatoryData()
+    if (mandatoryData()) {
+        const frm = new FormData()
+        const id = document.getElementById("txt-id-curso").value
+        const name = document.getElementById("txt-name-curso").value
+        const description = document.getElementById("txt-description-curso").value
+
+        frm.append("IIDCURSO", id)
+        frm.append("NOMBRE", name)
+        frm.append("DESCRIPCION", description)
+        frm.append("BHABILITADO", 1)
+
+        $.ajax({
+            type: "POST",
+            url: "Curso/saveData",
+            data: frm,
+            contentType: false,
+            processData: false,
+            success: data => {
+                if (data !== 0) {
+                    $.get("Curso/listOfCourses", (data) => {
+                        createList(data)
+                    })
+                    alert("Éxito")
+                    document.getElementById("btn-cancel").click()
+                } else {
+                    alert("Error")
+                }
+            }
+        })
+    } else {
+        mandatoryData()
+    }
 }
 
 const mandatoryData = () => {
+    let success = true
     const controllers = document.getElementsByClassName("mandatory")
     for (let i = 0; i < controllers.length; i++) {
         if (controllers[i].value == "") {
             controllers[i].parentNode.classList.add("error")
+            success = false
         } else {
             controllers[i].parentNode.classList.remove("error")
         }
     }
+    return success
 }
