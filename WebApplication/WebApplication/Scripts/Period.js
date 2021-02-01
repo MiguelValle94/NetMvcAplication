@@ -31,7 +31,7 @@ const createList = (data) => {
         content += `<td>${data[i].NOMBRE}</td>`
         content += `<td>${data[i].FECHAINICIO}</td>`
         content += `<td>${data[i].FECHAFIN}</td>`
-        content += "<td><button class='btn btn-primary' data-toggle='modal' data-target='#myModal'>E</button><button class='btn btn-danger'>X</button></td>"
+        content += "<td><button class='btn btn-primary' onclick='openModal()' data-toggle='modal' data-target='#myModal'>E</button><button class='btn btn-danger'>X</button></td>"
         content += "</tr>"
     }
     content += "</tbody>"
@@ -43,6 +43,11 @@ const createList = (data) => {
         { searching: false }
     )
 }
+
+const openModal = () => {
+    alert("Editar")
+}
+
 
 const searchByName = () => {
     const name = document.getElementById("txt-name").value

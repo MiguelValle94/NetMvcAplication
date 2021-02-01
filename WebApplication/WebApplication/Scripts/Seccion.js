@@ -18,7 +18,7 @@ const createList = (data) => {
         content += "<tr>"
         content += `<td>${data[i].IIDSECCION}</td>`
         content += `<td>${data[i].NOMBRE}</td>`
-        content += "<td><button class='btn btn-primary' data-toggle='modal' data-target='#myModal'>E</button><button class='btn btn-danger'>X</button></td>"
+        content += "<td><button class='btn btn-primary' onclick='openModal()' data-toggle='modal' data-target='#myModal'>E</button><button class='btn btn-danger'>X</button></td>"
         content += "</tr>"
     }
     content += "</tbody>"
@@ -29,4 +29,8 @@ const createList = (data) => {
     $("#table-seccion").dataTable(
         { searching: false }
     )
+}
+
+const openModal = () => {
+    alert("Editar")
 }

@@ -9,7 +9,7 @@
 <input type="button" id="btn-name" value="Buscar" onclick="searchByName()"/>
 <input type="button" id="btn-name" class="btn btn-danger" value="X" onclick="clearSearch()" />
 <br />
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Agregar</button>
+<button type="button" onclick="openModal(0)" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Agregar</button>
 
 <div id="div-table-curso"></div>
 
@@ -32,7 +32,7 @@
                     </tr>
                     <tr>
                         <td width="30%">Descripcion</td>
-                        <td width="70%"><input type="text" id="txt-name-curso" /></td>
+                        <td width="70%"><input type="text" id="txt-description-curso" /></td>
                     </tr>
                 </table>
             </div>

@@ -32,7 +32,7 @@ const createList = (data) => {
         content += `<td>${data[i].APPATERNO}</td>`
         content += `<td>${data[i].APMATERNO}</td>`
         content += `<td>${data[i].TELEFONOPADRE}</td>`
-        content += "<td><button class='btn btn-primary' data-toggle='modal' data-target='#myModal'>E</button><button class='btn btn-danger'>X</button></td>"
+        content += "<td><button class='btn btn-primary' onclick='openModal()' data-toggle='modal' data-target='#myModal'>E</button><button class='btn btn-danger'>X</button></td>"
         content += "</tr>"
     }
     content += "</tbody>"
@@ -43,6 +43,10 @@ const createList = (data) => {
     $("#table-alumno").dataTable(
         { searching: false }
     )
+}
+
+const openModal = () => {
+    alert("Editar")
 }
 
 $.get("Alumno/listGender", (data) => {
