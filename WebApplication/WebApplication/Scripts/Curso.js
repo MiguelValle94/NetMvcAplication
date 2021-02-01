@@ -20,7 +20,7 @@ const createList = (data) => {
         content += `<td>${data[i].IIDCURSO}</td>`
         content += `<td>${data[i].NOMBRE}</td>`
         content += `<td>${data[i].DESCRIPCION}</td>`
-        content += `<td><button class='btn btn-primary' onclick='openModal(${data[i].IIDCURSO})' data-toggle='modal' data-target='#myModal'>E</button><button class='btn btn-danger'>X</button></td>`
+        content += `<td><button class='btn btn-primary' onclick='openModal(${data[i].IIDCURSO})' data-toggle='modal' data-target='#myModal'>E</button><button class='btn btn-danger' onclick='deleteRegister(${data[i].IIDCURSO})'>X</button></td>`
         content += "</tr>"
     }
     content += "</tbody>"
@@ -47,6 +47,31 @@ const openModal = (id) => {
             document.getElementById("txt-description-curso").value = data[0].DESCRIPCION
         })
     }
+}
+
+const deleteRegister = (id) => {
+    alert(id)
+    const frm = new FormData()
+    frm.append("IIDCURSO", id)
+
+    $.ajax({
+        type: "POST",
+        url: "Curso/deleteData",
+        data: frm,
+        contentType: false,
+        processData: false,
+        success: data => {
+            if (data !== 0) {
+                $.get("Curso/listOfCourses", (data) => {
+                    createList(data)
+                })
+                alert("Éxito")
+                document.getElementById("btn-cancel").click()
+            } else {
+                alert("Error")
+            }
+        }
+    })
 }
 
 const searchByName = () => {

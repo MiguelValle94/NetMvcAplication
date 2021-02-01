@@ -68,5 +68,26 @@ namespace WebApplication.Controllers
 
             return afectedData;
         }
+
+        public int deleteData(Curso curso)
+        {
+            PruebaDataContext bd = new PruebaDataContext();
+            int afectedData = 0;
+
+            try
+            {
+                Curso selected = bd.Curso.Where(p => p.IIDCURSO.Equals(curso.IIDCURSO)).First();
+                selected.BHABILITADO = 0;
+
+                bd.SubmitChanges();
+                afectedData = 1;
+            }
+            catch (Exception ex)
+            {
+                afectedData = 0;
+            }
+
+            return afectedData;
+        }
     }
 }
