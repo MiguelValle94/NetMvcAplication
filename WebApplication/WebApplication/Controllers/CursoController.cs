@@ -53,7 +53,12 @@ namespace WebApplication.Controllers
                     afectedData = 1;
                 } 
                 else {
+                    Curso selected = bd.Curso.Where(p => p.IIDCURSO.Equals(curso.IIDCURSO)).First();
+                    selected.NOMBRE = curso.NOMBRE;
+                    selected.DESCRIPCION = curso.DESCRIPCION;
 
+                    bd.SubmitChanges();
+                    afectedData = 1;
                 }
             }
             catch (Exception ex)

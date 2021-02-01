@@ -3,6 +3,7 @@
     ViewBag.Title = "Index";
 }
 <link href="~/Content/datatables.css" rel="stylesheet" />
+<link href="~/Content/formsStyle.css" rel="stylesheet" />
 <link href="~/Content/jquery-ui.min.css" rel="stylesheet" />
 
 <h2>Alumnos:</h2>
@@ -63,7 +64,7 @@
                 </table>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-dismiss="modal">Guardar</button>
+                <button type="button" class="btn btn-success" onclick="sendData()">Guardar</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
             </div>
         </div>
