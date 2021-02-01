@@ -92,6 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\datatables.css" />
+    <Content Include="Content\formsStyle.css" />
     <Content Include="Content\jquery-ui.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\Alumno.js" />

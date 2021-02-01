@@ -35,7 +35,7 @@ const createList = (data) => {
 
 const openModal = (id) => {
     if (id === 0) {
-
+        deleteInputs()
     } else {
         $.get(`Curso/recoverData/?id=${id}`, (data) => {
             document.getElementById("txt-id-curso").value = data[0].IIDCURSO
@@ -59,4 +59,26 @@ const clearSearch = () => {
     })
 
     document.getElementById("txt-name").value = ""
+}
+
+const deleteInputs = () => {
+    const controllers = document.getElementsByClassName("delete-info")
+    for (let i = 0; i < controllers.length; i++) {
+        controllers[i].value = ""
+    }
+}
+
+const sendData = () => {
+    mandatoryData()
+}
+
+const mandatoryData = () => {
+    const controllers = document.getElementsByClassName("mandatory")
+    for (let i = 0; i < controllers.length; i++) {
+        if (controllers[i].value == "") {
+            controllers[i].parentNode.classList.add("error")
+        } else {
+            controllers[i].parentNode.classList.remove("error")
+        }
+    }
 }

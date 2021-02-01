@@ -3,6 +3,7 @@
     ViewBag.Title = "Index";
 }
 <link href="~/Content/datatables.css" rel="stylesheet" />
+<link href="~/Content/formsStyle.css" rel="stylesheet" />
 
 <h2>Cursos:</h2>
 <input type="text" id="txt-name" placeholder="Busque por nombre"/>
@@ -24,20 +25,20 @@
                 <table style="margin: auto">
                     <tr>
                         <td width="30%">ID</td>
-                        <td width="70%"><input type="text" id="txt-id-curso" readonly /></td>
+                        <td width="70%"><input type="text" class="delete-info" id="txt-id-curso" readonly /></td>
                     </tr>
                     <tr>
                         <td width="30%">Nombre</td>
-                        <td width="70%"><input type="text" id="txt-name-curso" /></td>
+                        <td width="70%"><input type="text" class="delete-info mandatory" id="txt-name-curso" /></td>
                     </tr>
                     <tr>
                         <td width="30%">Descripcion</td>
-                        <td width="70%"><input type="text" id="txt-description-curso" /></td>
+                        <td width="70%"><input type="text" class="delete-info mandatory" id="txt-description-curso" /></td>
                     </tr>
                 </table>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-dismiss="modal">Guardar</button>
+                <button type="button" class="btn btn-success" onclick="sendData()">Guardar</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
             </div>
         </div>
