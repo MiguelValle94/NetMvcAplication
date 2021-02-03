@@ -32,7 +32,7 @@ const createList = (data) => {
         content += `<td>${data[i].APPATERNO}</td>`
         content += `<td>${data[i].APMATERNO}</td>`
         content += `<td>${data[i].TELEFONOPADRE}</td>`
-        content += "<td><button class='btn btn-primary' onclick='openModal()' data-toggle='modal' data-target='#myModal'>E</button><button class='btn btn-danger'>X</button></td>"
+        content += `<td><button class='btn btn-primary' onclick='openModal(${data[i].IIDALUMNO})' data-toggle='modal' data-target='#myModal'>E</button><button class='btn btn-danger' onclick='deleteRegister(${data[i].IIDALUMNO})'>X</button></td>`
         content += "</tr>"
     }
     content += "</tbody>"
@@ -48,6 +48,31 @@ const createList = (data) => {
 const openModal = () => {
     alert("Editar")
 }
+
+const deleteRegister = (id) => {
+    const frm = new FormData()
+    frm.append("IIDALUMNO", id)
+
+    $.ajax({
+        type: "GET",
+        url: `Alumno/deleteData/?id=${id}`,
+        data: frm,
+        contentType: false,
+        processData: false,
+        success: data => {
+            if (data !== 0) {
+                $.get("Alumno/listStudents", (data) => {
+                    createList(data)
+                })
+                alert("Éxito")
+                document.getElementById("btn-cancel").click()
+            } else {
+                alert("Error")
+            }
+        }
+    })
+}
+
 
 $.get("Alumno/listGender", (data) => {
     populateCbo(data, document.getElementById("cbo-gender"))
