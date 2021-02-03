@@ -92,46 +92,50 @@ const deleteRegister = (id) => {
 }
 
 const sendData = () => {
-    //if (mandatoryData()) {
-    //    //const frm = new FormData()
-    //    //const id = document.getElementById("txt-id-alumno").value
-    //    //const name = document.getElementById("txt-name-alumno").value
-    //    //const fsurname = document.getElementById("txt-firstsurname-alumno").value
-    //    //const ssurname = document.getElementById("txt-secondsurname-alumno").value
-    //    //const gender = document.getElementById("cbo-gender-alumno").value
-    //    //const fphone = document.getElementById("num-phonefather-alumno").value
-    //    //const mphone = document.getElementById("num-phonemother-alumno").value
-    //    //const birth = document.getElementById("txt-birthday-alumno").value
-    //    //const siblings = document.getElementById("num-siblings-alumno").value
+    if (mandatoryData()) {
+        const frm = new FormData()
+        const id = document.getElementById("txt-id-alumno").value
+        const name = document.getElementById("txt-name-alumno").value
+        const fsurname = document.getElementById("txt-firstsurname-alumno").value
+        const ssurname = document.getElementById("txt-secondsurname-alumno").value
+        const gender = document.getElementById("cbo-gender-alumno").value
+        const fphone = document.getElementById("num-phonefather-alumno").value
+        const mphone = document.getElementById("num-phonemother-alumno").value
+        const birth = document.getElementById("txt-birthday-alumno").value
+        const siblings = document.getElementById("num-siblings-alumno").value
 
-    //    //frm.append("IIDALUMNO", id)
-    //    //frm.append("NOMBRE", name)
-    //    //frm.append("DESCRIPCION", fsurname)
-    //    //frm.append("DESCRIPCION", ssurname)
-    //    //frm.append("SEXO", gender)
-    //    //frm.append("BHABILITADO", 1)
+        frm.append("IIDALUMNO", id)
+        frm.append("NOMBRE", name)
+        frm.append("APPATERNO", fsurname)
+        frm.append("APMATERNO", ssurname)
+        frm.append("IIDSEXO", gender)
+        frm.append("TELEFONOPADRE", fphone)
+        frm.append("TELEFONOMADRE", mphone)
+        frm.append("FECHANACIMIENTO", birth)
+        frm.append("NUMEROHERMANOS", siblings)
+        frm.append("BHABILITADO", 1)
 
-    //    //$.ajax({
-    //    //    type: "POST",
-    //    //    url: "Curso/saveData",
-    //    //    data: frm,
-    //    //    contentType: false,
-    //    //    processData: false,
-    //    //    success: data => {
-    //    //        if (data !== 0) {
-    //    //            $.get("Curso/listOfCourses", (data) => {
-    //    //                createList(data)
-    //    //            })
-    //    //            alert("Éxito")
-    //    //            document.getElementById("btn-cancel").click()
-    //    //        } else {
-    //    //            alert("Error")
-    //    //        }
-    //    //    }
-    //    //})
-    //} else {
-    //    mandatoryData()
-    //}
+        $.ajax({
+            type: "POST",
+            url: "Alumno/saveData",
+            data: frm,
+            contentType: false,
+            processData: false,
+            success: data => {
+                if (data !== 0) {
+                    $.get("Alumno/listStudents", (data) => {
+                        createList(data)
+                    })
+                    alert("Éxito")
+                    document.getElementById("btn-cancel").click()
+                } else {
+                    alert("Error")
+                }
+            }
+        })
+    } else {
+        mandatoryData()
+    }
 }
 
 $.get("Alumno/listGender", (data) => {
