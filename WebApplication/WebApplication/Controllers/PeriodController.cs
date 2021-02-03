@@ -31,6 +31,15 @@ namespace WebApplication.Controllers
 
             return Json(list, JsonRequestBehavior.AllowGet);
         }
+        public JsonResult recoverData(int id)
+        {
+            PruebaDataContext bd = new PruebaDataContext();
+            var list = bd.Periodo.Where(p => p.BHABILITADO.Equals(1) && p.IIDPERIODO.Equals(id))
+                .Select(p => new { p.NOMBRE, p.IIDPERIODO, FECHAINICIO = ((DateTime)p.FECHAINICIO).ToShortDateString(), FECHAFIN = ((DateTime)p.FECHAFIN).ToShortDateString() }).ToList();
+
+            return Json(list, JsonRequestBehavior.AllowGet);
+        }
+
 
         public int deleteData(Periodo operiodo)
         {

@@ -44,7 +44,7 @@ const createList = (data) => {
     )
 }
 
-const openModal = () => {
+const openModal = (id) => {
     const controllers = document.getElementsByClassName("mandatory")
     for (let i = 0; i < controllers.length; i++) {
         controllers[i].parentNode.classList.remove("error")
@@ -52,10 +52,11 @@ const openModal = () => {
     if (id === 0) {
         deleteInputs()
     } else {
-        $.get(`Curso/recoverData/?id=${id}`, (data) => {
-            document.getElementById("txt-id-curso").value = data[0].IIDCURSO
-            document.getElementById("txt-name-curso").value = data[0].NOMBRE
-            document.getElementById("txt-description-curso").value = data[0].DESCRIPCION
+        $.get(`Period/recoverData/?id=${id}`, (data) => {
+            document.getElementById("txt-id-period").value = data[0].IIDPERIODO
+            document.getElementById("txt-name-period").value = data[0].NOMBRE
+            document.getElementById("txt-start-period").value = data[0].FECHAINICIO
+            document.getElementById("txt-end-period").value = data[0].FECHAFIN
         })
     }
 }
