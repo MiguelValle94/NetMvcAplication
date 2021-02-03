@@ -5,7 +5,7 @@ using System.Web;
 
 namespace WebApplication.Models
 {
-    public class Period
+    public class Periodo
     {
         public int IIDPERIODO { get; set; }
         public string NOMBRE { get; set; }

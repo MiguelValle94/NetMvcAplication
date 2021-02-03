@@ -12,7 +12,7 @@
 <input type="button" value="Buscar" onclick="filterByGender()" class="btn btn-success"/>
 <input type="button" value="X" onclick="clearData()" class="btn btn-danger" />
 <br />
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Agregar</button>
+<button type="button" onclick="openModal(0)" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Agregar</button>
 
 <div id="div-table-alumno"></div>
 
@@ -27,39 +27,39 @@
                 <table style="margin: auto">
                     <tr>
                         <td width="30%">ID</td>
-                        <td width="70%"><input type="text" id="txt-id-alumno" readonly /></td>
+                        <td width="70%"><input type="text" class="delete-info" id="txt-id-alumno" readonly /></td>
                     </tr>
                     <tr>
                         <td width="30%">Nombre</td>
-                        <td width="70%"><input type="text" id="txt-name-alumno" /></td>
+                        <td width="70%"><input type="text" class="delete-info mandatory" id="txt-name-alumno" /></td>
                     </tr>
                     <tr>
                         <td width="30%">Primer Apellido</td>
-                        <td width="70%"><input type="text" id="txt-firstsurname-alumno" /></td>
+                        <td width="70%"><input type="text" class="delete-info mandatory" id="txt-firstsurname-alumno" /></td>
                     </tr>
                     <tr>
                         <td width="30%">Segundo Apellido</td>
-                        <td width="70%"><input type="text" id="txt-secondsurname-alumno" /></td>
+                        <td width="70%"><input type="text" class="delete-info mandatory" id="txt-secondsurname-alumno" /></td>
                     </tr>
                     <tr>
                         <td width="30%">Género</td>
-                        <td width="70%"><select id="cbo-gender-alumno"></select></td>
+                        <td width="70%"><select class="delete-info mandatory" id="cbo-gender-alumno"></select></td>
                     </tr>
                     <tr>
                         <td width="30%">Teléfono Padre</td>
-                        <td width="70%"><input type="number" id="num-phonefather-alumno" /></td>
+                        <td width="70%"><input type="number" class="delete-info mandatory" id="num-phonefather-alumno" /></td>
                     </tr>
                     <tr>
                         <td width="30%">Teléfono Madre</td>
-                        <td width="70%"><input type="number" id="num-phonemother-alumno" /></td>
+                        <td width="70%"><input type="number" class="delete-info mandatory" id="num-phonemother-alumno" /></td>
                     </tr>
                     <tr>
                         <td width="30%">Fecha nacimiento</td>
-                        <td width="70%"><input type="text" class="datepicker" id="txt-birthday-alumno" /></td>
+                        <td width="70%"><input type="text" class="delete-info mandatory datepicker" id="txt-birthday-alumno" /></td>
                     </tr>
                     <tr>
                         <td width="30%">Número hermanos</td>
-                        <td width="70%"><input type="number" id="num-siblings-alumno" /></td>
+                        <td width="70%"><input type="number" class="delete-info mandatory" id="num-siblings-alumno" /></td>
                     </tr>
                 </table>
             </div>

@@ -50,7 +50,6 @@ const openModal = (id) => {
 }
 
 const deleteRegister = (id) => {
-    alert(id)
     const frm = new FormData()
     frm.append("IIDCURSO", id)
 
@@ -90,13 +89,6 @@ const clearSearch = () => {
     document.getElementById("txt-name").value = ""
 }
 
-const deleteInputs = () => {
-    const controllers = document.getElementsByClassName("delete-info")
-    for (let i = 0; i < controllers.length; i++) {
-        controllers[i].value = ""
-    }
-}
-
 const sendData = () => {
     if (mandatoryData()) {
         const frm = new FormData()
@@ -129,6 +121,13 @@ const sendData = () => {
         })
     } else {
         mandatoryData()
+    }
+}
+
+const deleteInputs = () => {
+    const controllers = document.getElementsByClassName("delete-info")
+    for (let i = 0; i < controllers.length; i++) {
+        controllers[i].value = ""
     }
 }
 

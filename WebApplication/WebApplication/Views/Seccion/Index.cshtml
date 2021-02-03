@@ -8,7 +8,7 @@
 
 <h2>Sección:</h2>
 <br />
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Agregar</button>
+<button type="button" onclick="openModal(0)" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Agregar</button>
 
 <div id="div-table-seccion"></div>
 
@@ -23,11 +23,11 @@
                 <table style="margin: auto">
                     <tr>
                         <td width="30%">ID</td>
-                        <td width="70%"><input type="text" id="txt-id-seccion" readonly /></td>
+                        <td width="70%"><input type="text"  class="delete-info" id="txt-id-seccion" readonly /></td>
                     </tr>
                     <tr>
                         <td width="30%">Nombre</td>
-                        <td width="70%"><input type="text" id="txt-name-seccion" /></td>
+                        <td width="70%"><input type="text"  class="delete-info mandatory" id="txt-name-seccion" /></td>
                     </tr>
                 </table>
             </div>

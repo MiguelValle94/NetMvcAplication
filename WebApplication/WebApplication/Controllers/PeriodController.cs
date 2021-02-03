@@ -31,5 +31,26 @@ namespace WebApplication.Controllers
 
             return Json(list, JsonRequestBehavior.AllowGet);
         }
+
+        public int deleteData(Periodo operiodo)
+        {
+            PruebaDataContext bd = new PruebaDataContext();
+            int afectedData = 0;
+
+            try
+            {
+                Periodo selected = bd.Periodo.Where(p => p.IIDPERIODO.Equals(operiodo.IIDPERIODO)).First();
+                selected.BHABILITADO = 0;
+
+                bd.SubmitChanges();
+                afectedData = 1;
+            }
+            catch (Exception ex)
+            {
+                afectedData = 0;
+            }
+
+            return afectedData;
+        }
     }
 }

@@ -10,7 +10,7 @@
 <input type="text" id="txt-name" placeholder="Busque por nombre" onkeyup="searchByName()" />
 <input type="button" id="btn-name" class="btn btn-danger" value="X" onclick="clearSearch()" />
 <br />
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Agregar</button>
+<button type="button" onclick="openModal(0)" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Agregar</button>
 
 <div id="div-table-period"></div>
 
@@ -25,25 +25,25 @@
                 <table style="margin: auto">
                     <tr>
                         <td width="30%">ID</td>
-                        <td width="70%"><input type="text" id="txt-id-period" readonly /></td>
+                        <td width="70%"><input type="text" class="delete-info" id="txt-id-period" readonly /></td>
                     </tr>
                     <tr>
                         <td width="30%">Nombre</td>
-                        <td width="70%"><input type="text" id="txt-name-period" /></td>
+                        <td width="70%"><input type="text" class="delete-info mandatory" id="txt-name-period" /></td>
                     </tr>
                     <tr>
                         <td width="30%">Inicio</td>
-                        <td width="70%"><input type="text" class="datepicker" id="txt-start-period" /></td>
+                        <td width="70%"><input type="text" class="delete-info mandatory datepicker" id="txt-start-period" /></td>
                     </tr>
                     <tr>
                         <td width="30%">Fin</td>
-                        <td width="70%"><input type="text" class="datepicker" id="txt-end-period"/></td>
+                        <td width="70%"><input type="text" class="delete-info mandatory datepicker" id="txt-end-period"/></td>
                     </tr>
                 </table>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-success" onclick="sendData()">Guardar</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                <button type="button" id="btn-cancel" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
             </div>
         </div>
     </div>

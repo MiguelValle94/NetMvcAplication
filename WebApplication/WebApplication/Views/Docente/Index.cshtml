@@ -10,7 +10,7 @@
 <label>Seleccione modalidad contrato:</label>
 <select id="cbo-contract" onchange="filterByContract()"></select>
 <br />
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Agregar</button>
+<button type="button" onclick="openModal(0)" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Agregar</button>
 
 <div id="div-table-docente"></div>
 
@@ -25,47 +25,47 @@
                 <table style="margin: auto">
                     <tr>
                         <td width="30%">ID</td>
-                        <td width="70%"><input type="text" id="txt-id-docente" readonly /></td>
+                        <td width="70%"><input type="text" class="delete-info" id="txt-id-docente" readonly /></td>
                     </tr>
                     <tr>
                         <td width="30%">Nombre</td>
-                        <td width="70%"><input type="text" id="txt-name-docente" /></td>
+                        <td width="70%"><input type="text" class="delete-info mandatory" id="txt-name-docente" /></td>
                     </tr>
                     <tr>
                         <td width="30%">Primer Apellido</td>
-                        <td width="70%"><input type="text" id="txt-firstsurname-alumno" /></td>
+                        <td width="70%"><input type="text" class="delete-info mandatory" id="txt-firstsurname-alumno" /></td>
                     </tr>
                     <tr>
                         <td width="30%">Segundo Apellido</td>
-                        <td width="70%"><input type="text" id="txt-secondsurname-alumno" /></td>
+                        <td width="70%"><input type="text" class="delete-info mandatory" id="txt-secondsurname-alumno" /></td>
                     </tr>
                     <tr>
                         <td width="30%">Dirección</td>
-                        <td width="70%"><input type="text" id="txt-address-docente" /></td>
+                        <td width="70%"><input type="text" class="delete-info mandatory" id="txt-address-docente" /></td>
                     </tr>
                     <tr>
                         <td width="30%">Teléfono Fijo</td>
-                        <td width="70%"><input type="number" id="num-phone-docente" /></td>
+                        <td width="70%"><input type="number"  class="delete-info mandatory" id="num-phone-docente" /></td>
                     </tr>
                     <tr>
                         <td width="30%">Teléfono Móvil</td>
-                        <td width="70%"><input type="number" id="num-mobile-docente" /></td>
+                        <td width="70%"><input type="number"  class="delete-info mandatory" id="num-mobile-docente" /></td>
                     </tr>
                     <tr>
                         <td width="30%">Email</td>
-                        <td width="70%"><input type="email" class="datepicker" id="txt-email-docente" /></td>
+                        <td width="70%"><input type="email" class="delete-info mandatory datepicker" id="txt-email-docente" /></td>
                     </tr>
                     <tr>
                         <td width="30%">Género</td>
-                        <td width="70%"><select id="cbo-gender-docente"></select></td>
+                        <td width="70%"><select  class="delete-info mandatory" id="cbo-gender-docente"></select></td>
                     </tr>
                     <tr>
                         <td width="30%">Fecha contrato</td>
-                        <td width="70%"><input type="text" class="datepicker" id="txt-contractdate-docente" /></td>
+                        <td width="70%"><input type="text" class="delete-info mandatory datepicker" id="txt-contractdate-docente" /></td>
                     </tr>
                     <tr>
                         <td width="30%">Contrato</td>
-                        <td width="70%"><select id="cbo-contract-docente"></select></td>
+                        <td width="70%"><select  class="delete-info mandatory" id="cbo-contract-docente"></select></td>
                     </tr>
                     <tr>
                         <td width="30%">Foto</td>
