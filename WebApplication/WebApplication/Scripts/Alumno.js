@@ -45,8 +45,26 @@ const createList = (data) => {
     )
 }
 
-const openModal = () => {
-    alert("Editar")
+const openModal = (id) => {
+    const controllers = document.getElementsByClassName("mandatory")
+    for (let i = 0; i < controllers.length; i++) {
+        controllers[i].parentNode.classList.remove("error")
+    }
+    if (id === 0) {
+        deleteInputs()
+    } else {
+        $.get(`Alumno/recoverData/?id=${id}`, (data) => {
+            document.getElementById("txt-id-alumno").value = data[0].IIDALUMNO
+            document.getElementById("txt-name-alumno").value = data[0].NOMBRE
+            document.getElementById("txt-firstsurname-alumno").value = data[0].APPATERNO
+            document.getElementById("txt-secondsurname-alumno").value = data[0].APMATERNO
+            document.getElementById("cbo-gender-alumno").value = data[0].IIDSEXO
+            document.getElementById("num-phonefather-alumno").value = data[0].TELEFONOPADRE
+            document.getElementById("num-phonemother-alumno").value = data[0].TELEFONOMADRE
+            document.getElementById("txt-birthday-alumno").value = data[0].FECHANACIMIENTO
+            document.getElementById("num-siblings-alumno").value = data[0].NUMEROHERMANOS
+        })
+    }
 }
 
 const deleteRegister = (id) => {
@@ -73,6 +91,48 @@ const deleteRegister = (id) => {
     })
 }
 
+const sendData = () => {
+    //if (mandatoryData()) {
+    //    //const frm = new FormData()
+    //    //const id = document.getElementById("txt-id-alumno").value
+    //    //const name = document.getElementById("txt-name-alumno").value
+    //    //const fsurname = document.getElementById("txt-firstsurname-alumno").value
+    //    //const ssurname = document.getElementById("txt-secondsurname-alumno").value
+    //    //const gender = document.getElementById("cbo-gender-alumno").value
+    //    //const fphone = document.getElementById("num-phonefather-alumno").value
+    //    //const mphone = document.getElementById("num-phonemother-alumno").value
+    //    //const birth = document.getElementById("txt-birthday-alumno").value
+    //    //const siblings = document.getElementById("num-siblings-alumno").value
+
+    //    //frm.append("IIDALUMNO", id)
+    //    //frm.append("NOMBRE", name)
+    //    //frm.append("DESCRIPCION", fsurname)
+    //    //frm.append("DESCRIPCION", ssurname)
+    //    //frm.append("SEXO", gender)
+    //    //frm.append("BHABILITADO", 1)
+
+    //    //$.ajax({
+    //    //    type: "POST",
+    //    //    url: "Curso/saveData",
+    //    //    data: frm,
+    //    //    contentType: false,
+    //    //    processData: false,
+    //    //    success: data => {
+    //    //        if (data !== 0) {
+    //    //            $.get("Curso/listOfCourses", (data) => {
+    //    //                createList(data)
+    //    //            })
+    //    //            alert("Éxito")
+    //    //            document.getElementById("btn-cancel").click()
+    //    //        } else {
+    //    //            alert("Error")
+    //    //        }
+    //    //    }
+    //    //})
+    //} else {
+    //    mandatoryData()
+    //}
+}
 
 $.get("Alumno/listGender", (data) => {
     populateCbo(data, document.getElementById("cbo-gender"))
@@ -105,4 +165,25 @@ const clearData = () => {
     $.get("Alumno/listStudents", (data) => {
         createList(data)
     })
+}
+
+const deleteInputs = () => {
+    const controllers = document.getElementsByClassName("delete-info")
+    for (let i = 0; i < controllers.length; i++) {
+        controllers[i].value = ""
+    }
+}
+
+const mandatoryData = () => {
+    let success = true
+    const controllers = document.getElementsByClassName("mandatory")
+    for (let i = 0; i < controllers.length; i++) {
+        if (controllers[i].value == "") {
+            controllers[i].parentNode.classList.add("error")
+            success = false
+        } else {
+            controllers[i].parentNode.classList.remove("error")
+        }
+    }
+    return success
 }
