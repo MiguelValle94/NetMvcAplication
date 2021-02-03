@@ -40,6 +40,37 @@ namespace WebApplication.Controllers
             return Json(list, JsonRequestBehavior.AllowGet);
         }
 
+        public int saveData(Periodo periodo)
+        {
+            PruebaDataContext bd = new PruebaDataContext();
+            int afectedData = 0;
+
+            try
+            {
+                if (periodo.IIDPERIODO == 0)
+                {
+                    bd.Periodo.InsertOnSubmit(periodo);
+                    bd.SubmitChanges();
+                    afectedData = 1;
+                }
+                else
+                {
+                    Periodo selected = bd.Periodo.Where(p => p.IIDPERIODO.Equals(periodo.IIDPERIODO)).First();
+                    selected.NOMBRE = periodo.NOMBRE;
+                    selected.FECHAINICIO = periodo.FECHAINICIO;
+                    selected.FECHAFIN = periodo.FECHAFIN;
+
+                    bd.SubmitChanges();
+                    afectedData = 1;
+                }
+            }
+            catch (Exception ex)
+            {
+                afectedData = 0;
+            }
+
+            return afectedData;
+        }
 
         public int deleteData(Periodo operiodo)
         {

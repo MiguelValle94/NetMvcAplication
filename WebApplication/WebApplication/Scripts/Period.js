@@ -61,6 +61,43 @@ const openModal = (id) => {
     }
 }
 
+const sendData = () => {
+    if (mandatoryData()) {
+        const frm = new FormData()
+        const id = document.getElementById("txt-id-period").value
+        const name = document.getElementById("txt-name-period").value
+        const start = document.getElementById("txt-start-period").value
+        const end = document.getElementById("txt-start-period").value
+
+        frm.append("IIDPERIODO", id)
+        frm.append("NOMBRE", name)
+        frm.append("FECHAINICIO", start)
+        frm.append("FECHAFIN", end)
+        frm.append("BHABILITADO", 1)
+
+        $.ajax({
+            type: "POST",
+            url: "Period/saveData",
+            data: frm,
+            contentType: false,
+            processData: false,
+            success: data => {
+                if (data !== 0) {
+                    $.get("Period/listPeriod", (data) => {
+                        createList(data)
+                    })
+                    alert("Éxito")
+                    document.getElementById("btn-cancel").click()
+                } else {
+                    alert("Error")
+                }
+            }
+        })
+    } else {
+        mandatoryData()
+    }
+}
+
 const mandatoryData = () => {
     let success = true
     const controllers = document.getElementsByClassName("mandatory")
