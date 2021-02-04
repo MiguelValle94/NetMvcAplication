@@ -45,7 +45,28 @@ const createList = (data) => {
 }
 
 const openModal = (id) => {
-    alert("Editar")
+    const controllers = document.getElementsByClassName("mandatory")
+    for (let i = 0; i < controllers.length; i++) {
+        controllers[i].parentNode.classList.remove("error")
+    }
+    if (id === 0) {
+        deleteInputs()
+    } else {
+        $.get(`Docente/recoverData/?id=${id}`, (data) => {
+            document.getElementById("txt-id-docente").value = data[0].IIDDOCENTE
+            document.getElementById("txt-name-docente").value = data[0].NOMBRE
+            document.getElementById("txt-firstsurname-docente").value = data[0].APPATERNO
+            document.getElementById("txt-secondsurname-docente").value = data[0].APMATERNO
+            document.getElementById("cbo-gender-docente").value = data[0].IIDSEXO
+            document.getElementById("txt-address-docente").value = data[0].DIRECCION
+            document.getElementById("num-phone-docente").value = data[0].TELEFONOFIJO
+            document.getElementById("num-mobile-docente").value = data[0].TELEFONOCELULAR
+            document.getElementById("txt-email-docente").value = data[0].EMAIL
+            document.getElementById("txt-contractdate-docente").value = data[0].FECHACONTRATO
+            document.getElementById("cbo-contract-docente").value = data[0].IIDMODALIDADCONTRATO
+            document.getElementById("img-photo-docente").value = data[0].FOTO
+        })
+    }
 }
 
 $.get("Docente/listContracts", (data) => {

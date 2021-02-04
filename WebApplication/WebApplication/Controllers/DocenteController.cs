@@ -37,6 +37,13 @@ namespace WebApplication.Controllers
                  .Select(p => new { p.NOMBRE, p.IIDDOCENTE, p.APPATERNO, p.APMATERNO, p.EMAIL }).ToList();
             return Json(list, JsonRequestBehavior.AllowGet);
         }
+        public JsonResult recoverData(int id)
+        {
+            PruebaDataContext bd = new PruebaDataContext();
+            var list = bd.Docente.Where(p => p.BHABILITADO.Equals(1) && p.IIDDOCENTE.Equals(id))
+                .Select(p => new { p.NOMBRE, p.IIDDOCENTE, p.APPATERNO, p.APMATERNO, p.DIRECCION, p.TELEFONOCELULAR, p.TELEFONOFIJO, p.EMAIL, p.IIDSEXO, p.IIDMODALIDADCONTRATO, FECHACONTRATO = ((DateTime)p.FECHACONTRATO).ToShortDateString(),p.FOTO }).ToList();
+            return Json(list, JsonRequestBehavior.AllowGet);
+        }
 
         public int deleteData(int id)
         {
