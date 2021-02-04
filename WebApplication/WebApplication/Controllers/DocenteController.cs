@@ -45,6 +45,46 @@ namespace WebApplication.Controllers
             return Json(list, JsonRequestBehavior.AllowGet);
         }
 
+        public int saveData(Docente docente)
+        {
+            PruebaDataContext bd = new PruebaDataContext();
+            int afectedData = 0;
+
+            try
+            {
+                if (docente.IIDDOCENTE == 0)
+                {
+                    bd.Docente.InsertOnSubmit(docente);
+                    bd.SubmitChanges();
+                    afectedData = 1;
+                }
+                else
+                {
+                    Docente selected = bd.Docente.Where(p => p.IIDDOCENTE.Equals(docente.IIDDOCENTE)).First();
+                    selected.NOMBRE = docente.NOMBRE;
+                    selected.APPATERNO = docente.APPATERNO;
+                    selected.APMATERNO = docente.APMATERNO;
+                    selected.IIDSEXO = docente.IIDSEXO;
+                    selected.DIRECCION = docente.DIRECCION;
+                    selected.TELEFONOFIJO = docente.TELEFONOFIJO;
+                    selected.TELEFONOCELULAR = docente.TELEFONOCELULAR;
+                    selected.EMAIL = docente.EMAIL;
+                    selected.FECHACONTRATO = docente.FECHACONTRATO;
+                    selected.IIDMODALIDADCONTRATO = docente.IIDMODALIDADCONTRATO;
+                    //selected.FOTO = docente.FOTO;
+
+                    bd.SubmitChanges();
+                    afectedData = 1;
+                }
+            }
+            catch (Exception ex)
+            {
+                afectedData = 0;
+            }
+
+            return afectedData;
+        }
+
         public int deleteData(int id)
         {
             PruebaDataContext bd = new PruebaDataContext();

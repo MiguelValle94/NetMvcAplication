@@ -102,6 +102,59 @@ const deleteRegister = (id) => {
     })
 }
 
+const sendData = () => {
+    if (mandatoryData()) {
+        const frm = new FormData()
+        const id = document.getElementById("txt-id-docente").value
+        const name = document.getElementById("txt-name-docente").value
+        const fsurname = document.getElementById("txt-firstsurname-docente").value
+        const ssurname = document.getElementById("txt-secondsurname-docente").value
+        const gender = document.getElementById("cbo-gender-docente").value
+        const address = document.getElementById("txt-address-docente").value
+        const phone = document.getElementById("num-phone-docente").value
+        const mphone = document.getElementById("num-mobile-docente").value
+        const email = document.getElementById("txt-email-docente").value
+        const contractDate = document.getElementById("txt-contractdate-docente").valu
+        const contractType = document.getElementById("cbo-contract-docente").value
+        const photo = document.getElementById("img-photo-docente").value
+
+        frm.append("IIDDOCENTE", id)
+        frm.append("NOMBRE", name)
+        frm.append("APPATERNO", fsurname)
+        frm.append("APMATERNO", ssurname)
+        frm.append("IIDSEXO", gender)
+        frm.append("DIRECCION", address)
+        frm.append("TELEFONOFIJO", phone)
+        frm.append("TELEFONOCELULAR", mphone)
+        frm.append("EMAIL", email)
+        frm.append("FECHACONTRATO", contractDate)
+        frm.append("IIDMODALIDADCONTRATO", contractType)
+        //frm.append("FOTO", photo)
+        frm.append("BHABILITADO", 1)
+
+        $.ajax({
+            type: "POST",
+            url: "Docente/saveData",
+            data: frm,
+            contentType: false,
+            processData: false,
+            success: data => {
+                if (data !== 0) {
+                    $.get("Docente/listTeachers", (data) => {
+                        createList(data)
+                    })
+                    alert("Éxito")
+                    document.getElementById("btn-cancel").click()
+                } else {
+                    alert("Error")
+                }
+            }
+        })
+    } else {
+        mandatoryData()
+    }
+}
+
 const populateCbo = (data, control) => {
     let content
     content += "<option value='0'>--Seleccione--</option>"
