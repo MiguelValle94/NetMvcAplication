@@ -37,5 +37,26 @@ namespace WebApplication.Controllers
                  .Select(p => new { p.NOMBRE, p.IIDDOCENTE, p.APPATERNO, p.APMATERNO, p.EMAIL }).ToList();
             return Json(list, JsonRequestBehavior.AllowGet);
         }
+
+        public int deleteData(int id)
+        {
+            PruebaDataContext bd = new PruebaDataContext();
+            int afectedData = 0;
+
+            try
+            {
+                Docente selected = bd.Docente.Where(p => p.IIDDOCENTE.Equals(id)).First();
+                selected.BHABILITADO = 0;
+
+                bd.SubmitChanges();
+                afectedData = 1;
+            }
+            catch (Exception ex)
+            {
+                afectedData = 0;
+            }
+
+            return afectedData;
+        }
     }
 }

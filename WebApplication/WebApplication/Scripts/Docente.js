@@ -31,8 +31,7 @@ const createList = (data) => {
         content += `<td>${data[i].NOMBRE}</td>`
         content += `<td>${data[i].APPATERNO}</td>`
         content += `<td>${data[i].APMATERNO}</td>`
-        content += `<td>${data[i].EMAIL}</td>`
-        content += "<td><button class='btn btn-primary' onclick='openModal()' data-toggle='modal' data-target='#myModal'>E</button><button class='btn btn-danger'>X</button></td>"
+        content += `<td><button class='btn btn-primary' onclick='openModal(${data[i].IIDDOCENTE})' data-toggle='modal' data-target='#myModal'>E</button><button class='btn btn-danger' onclick='deleteRegister(${data[i].IIDDOCENTE})'>X</button></td>`
         content += "</tr>"
     }
     content += "</tbody>"
@@ -45,10 +44,9 @@ const createList = (data) => {
     )
 }
 
-const openModal = () => {
+const openModal = (id) => {
     alert("Editar")
 }
-
 
 $.get("Docente/listContracts", (data) => {
     populateCbo(data, document.getElementById("cbo-contract"))
@@ -59,6 +57,29 @@ $.get("Alumno/listGender", (data) => {
     populateCbo(data, document.getElementById("cbo-gender-docente"))
 })
 
+const deleteRegister = (id) => {
+    const frm = new FormData()
+    frm.append("IIDDOCENTE", id)
+
+    $.ajax({
+        type: "GET",
+        url: `Docente/deleteData/?id=${id}`,
+        data: frm,
+        contentType: false,
+        processData: false,
+        success: data => {
+            if (data !== 0) {
+                $.get("Docente/listTeachers", (data) => {
+                    createList(data)
+                })
+                alert("Éxito")
+                document.getElementById("btn-cancel").click()
+            } else {
+                alert("Error")
+            }
+        }
+    })
+}
 
 const populateCbo = (data, control) => {
     let content
@@ -80,4 +101,25 @@ const filterByContract = () => {
             createList(data)
         })
     }
+}
+
+const deleteInputs = () => {
+    const controllers = document.getElementsByClassName("delete-info")
+    for (let i = 0; i < controllers.length; i++) {
+        controllers[i].value = ""
+    }
+}
+
+const mandatoryData = () => {
+    let success = true
+    const controllers = document.getElementsByClassName("mandatory")
+    for (let i = 0; i < controllers.length; i++) {
+        if (controllers[i].value == "") {
+            controllers[i].parentNode.classList.add("error")
+            success = false
+        } else {
+            controllers[i].parentNode.classList.remove("error")
+        }
+    }
+    return success
 }
