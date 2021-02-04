@@ -18,7 +18,8 @@ namespace WebApplication.Controllers
         {
             PruebaDataContext bd = new PruebaDataContext();
             var list = bd.Docente.Where(p => p.BHABILITADO.Equals(1))
-                .Select(p => new { p.NOMBRE, p.IIDDOCENTE, p.APPATERNO, p.APMATERNO, p.EMAIL }).ToList();
+                .Select(p => new { p.NOMBRE, p.IIDDOCENTE, p.APPATERNO, p.APMATERNO, p.DIRECCION, p.TELEFONOCELULAR, p.TELEFONOFIJO, p.EMAIL, p.IIDSEXO, p.IIDMODALIDADCONTRATO, FECHACONTRATO = ((DateTime)p.FECHACONTRATO).ToShortDateString() }).ToList();
+            return Json(list, JsonRequestBehavior.AllowGet);
             return Json(list, JsonRequestBehavior.AllowGet);
         }
 
@@ -41,7 +42,7 @@ namespace WebApplication.Controllers
         {
             PruebaDataContext bd = new PruebaDataContext();
             var list = bd.Docente.Where(p => p.BHABILITADO.Equals(1) && p.IIDDOCENTE.Equals(id))
-                .Select(p => new { p.NOMBRE, p.IIDDOCENTE, p.APPATERNO, p.APMATERNO, p.DIRECCION, p.TELEFONOCELULAR, p.TELEFONOFIJO, p.EMAIL, p.IIDSEXO, p.IIDMODALIDADCONTRATO, FECHACONTRATO = ((DateTime)p.FECHACONTRATO).ToShortDateString(),p.FOTO }).ToList();
+                .Select(p => new { p.NOMBRE, p.IIDDOCENTE, p.APPATERNO, p.APMATERNO, p.DIRECCION, p.TELEFONOCELULAR, p.TELEFONOFIJO, p.EMAIL, p.IIDSEXO, p.IIDMODALIDADCONTRATO, FECHACONTRATO = ((DateTime)p.FECHACONTRATO).ToShortDateString() }).ToList();
             return Json(list, JsonRequestBehavior.AllowGet);
         }
 

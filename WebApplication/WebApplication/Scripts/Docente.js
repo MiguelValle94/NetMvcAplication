@@ -7,6 +7,7 @@
 )
 
 $.get("Docente/listTeachers", (data) => {
+    alert(JSON.stringify(data))
     createList(data)
 })
 
@@ -114,9 +115,9 @@ const sendData = () => {
         const phone = document.getElementById("num-phone-docente").value
         const mphone = document.getElementById("num-mobile-docente").value
         const email = document.getElementById("txt-email-docente").value
-        const contractDate = document.getElementById("txt-contractdate-docente").valu
+        const contractDate = document.getElementById("txt-contractdate-docente").value
         const contractType = document.getElementById("cbo-contract-docente").value
-        const photo = document.getElementById("img-photo-docente").value
+        //const photo = document.getElementById("img-photo-docente").value
 
         frm.append("IIDDOCENTE", id)
         frm.append("NOMBRE", name)
