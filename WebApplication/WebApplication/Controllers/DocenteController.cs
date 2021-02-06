@@ -71,8 +71,7 @@ namespace WebApplication.Controllers
                     selected.TELEFONOCELULAR = docente.TELEFONOCELULAR;
                     selected.EMAIL = docente.EMAIL;
                     selected.FECHACONTRATO = docente.FECHACONTRATO;
-                    selected.IIDMODALIDADCONTRATO = docente.IIDMODALIDADCONTRATO;
-                    //selected.FOTO = docente.FOTO;
+                   selected.IIDMODALIDADCONTRATO = docente.IIDMODALIDADCONTRATO;             
 
                     bd.SubmitChanges();
                     afectedData = 1;

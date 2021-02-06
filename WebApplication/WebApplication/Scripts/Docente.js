@@ -64,7 +64,6 @@ const openModal = (id) => {
             document.getElementById("txt-email-docente").value = data[0].EMAIL
             document.getElementById("txt-contractdate-docente").value = data[0].FECHACONTRATO
             document.getElementById("cbo-contract-docente").value = data[0].IIDMODALIDADCONTRATO
-            document.getElementById("img-photo-docente").value = data[0].FOTO
         })
     }
 }
@@ -116,7 +115,6 @@ const sendData = () => {
         const email = document.getElementById("txt-email-docente").value
         const contractDate = document.getElementById("txt-contractdate-docente").value
         const contractType = document.getElementById("cbo-contract-docente").value
-        //const photo = document.getElementById("img-photo-docente").value
 
         frm.append("IIDDOCENTE", id)
         frm.append("NOMBRE", name)
@@ -129,7 +127,6 @@ const sendData = () => {
         frm.append("EMAIL", email)
         frm.append("FECHACONTRATO", contractDate)
         frm.append("IIDMODALIDADCONTRATO", contractType)
-        //frm.append("FOTO", photo)
         frm.append("BHABILITADO", 1)
 
         $.ajax({
