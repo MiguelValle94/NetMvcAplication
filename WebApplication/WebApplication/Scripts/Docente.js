@@ -7,7 +7,6 @@
 )
 
 $.get("Docente/listTeachers", (data) => {
-    alert(JSON.stringify(data))
     createList(data)
 })
 
@@ -197,4 +196,16 @@ const mandatoryData = () => {
         }
     }
     return success
+}
+
+const selectPhoto = () => {
+    const file = document.getElementById("btn-photo").files[0]
+    const reader = new FileReader()
+    if (reader != null) {
+        reader.onloadend = () => {
+            const img = document.getElementById("img-photo-docente")
+            img.src = reader.result
+        }
+    }
+    reader.readAsDataURL(file)
 }
