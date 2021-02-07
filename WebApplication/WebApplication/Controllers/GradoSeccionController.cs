@@ -45,6 +45,37 @@ namespace WebApplication.Controllers
             return Json(list, JsonRequestBehavior.AllowGet);
         }
 
+        public int saveData(GradoSeccion gs)
+        {
+            PruebaDataContext bd = new PruebaDataContext();
+            int afectedData = 0;
+
+            try
+            {
+                if (gs.IID == 0)
+                {
+                    bd.GradoSeccion.InsertOnSubmit(gs);
+                    bd.SubmitChanges();
+                    afectedData = 1;
+                }
+                else
+                {
+                    GradoSeccion selected = bd.GradoSeccion.Where(p => p.IID.Equals(gs.IID)).First();
+                    selected.IIDGRADO = gs.IIDGRADO;
+                    selected.IIDSECCION = gs.IIDSECCION;
+
+                    bd.SubmitChanges();
+                    afectedData = 1;
+                }
+            }
+            catch (Exception ex)
+            {
+                afectedData = 0;
+            }
+
+            return afectedData;
+        }
+
         public JsonResult listSection ()
         {
             PruebaDataContext bd = new PruebaDataContext();

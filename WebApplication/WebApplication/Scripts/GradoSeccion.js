@@ -65,6 +65,48 @@ const populateCbo = (data, control) => {
     control.innerHTML = content
 }
 
+const sendData = () => {
+    if (mandatoryData()) {
+        const frm = new FormData()
+        const id = document.getElementById("txt-id-gradoseccion").value
+        const grade = document.getElementById("cbo-grado").value
+        const section = document.getElementById("cbo-seccion").value
+
+        frm.append("IID", id)
+        frm.append("IIDGRADO", grade)
+        frm.append("IIDSECCION", section)
+        frm.append("BHABILITADO", 1)
+
+        $.ajax({
+            type: "POST",
+            url: "GradoSeccion/saveData",
+            data: frm,
+            contentType: false,
+            processData: false,
+            success: data => {
+                if (data !== 0) {
+                    $.get("GradoSeccion/listGradoSeccion", (data) => {
+                        createList(data)
+                    })
+                    $.get("GradoSeccion/listSection", (data) => {
+                        populateCbo(data, document.getElementById("cbo-seccion"), true)
+                    })
+
+                    $.get("GradoSeccion/listGrade", (data) => {
+                        populateCbo(data, document.getElementById("cbo-grado"), true)
+                    })
+                    alert("Éxito")
+                    document.getElementById("btn-cancel").click()
+                } else {
+                    alert("Error")
+                }
+            }
+        })
+    } else {
+        mandatoryData()
+    }
+}
+
 const deleteInputs = () => {
     const controllers = document.getElementsByClassName("delete-info")
     for (let i = 0; i < controllers.length; i++) {
