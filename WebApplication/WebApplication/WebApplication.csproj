@@ -124,6 +124,7 @@
       <DependentUpon>Prueba.dbml</DependentUpon>
     </None>
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
+    <Content Include="Scripts\GradoSeccion.js" />
     <Content Include="Scripts\jquery-3.0.0.js" />
     <Content Include="Scripts\jquery-3.0.0.min.js" />
     <Content Include="Scripts\jquery-3.0.0.slim.js" />
@@ -146,6 +147,7 @@
     <Compile Include="Controllers\AlumnoController.cs" />
     <Compile Include="Controllers\CursoController.cs" />
     <Compile Include="Controllers\DocenteController.cs" />
+    <Compile Include="Controllers\GradoSeccionController.cs" />
     <Compile Include="Controllers\PeriodController.cs" />
     <Compile Include="Controllers\SeccionController.cs" />
     <Compile Include="Global.asax.cs">
@@ -181,6 +183,7 @@
     <Content Include="Views\Alumno\Index.cshtml" />
     <Content Include="Views\Docente\Index.cshtml" />
     <Content Include="Views\Seccion\Index.cshtml" />
+    <Content Include="Views\GradoSeccion\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
