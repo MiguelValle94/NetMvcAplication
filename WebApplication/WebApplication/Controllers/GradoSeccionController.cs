@@ -22,6 +22,7 @@ namespace WebApplication.Controllers
                        on gradosec.IIDSECCION equals sec.IIDSECCION
                        join grad in bd.Grado
                        on gradosec.IIDGRADO equals grad.IIDGRADO
+                       where gradosec.BHABILITADO.Equals(1)
                        select new
                        {
                            gradosec.IID,
@@ -76,6 +77,26 @@ namespace WebApplication.Controllers
             return afectedData;
         }
 
+        public int deleteData(int id)
+        {
+            PruebaDataContext bd = new PruebaDataContext();
+            int afectedData = 0;
+
+            try
+            {
+                GradoSeccion selected = bd.GradoSeccion.Where(p => p.IID.Equals(id)).First();
+                selected.BHABILITADO = 0;
+
+                bd.SubmitChanges();
+                afectedData = 1;
+            }
+            catch (Exception ex)
+            {
+                afectedData = 0;
+            }
+
+            return afectedData;
+        }
         public JsonResult listSection ()
         {
             PruebaDataContext bd = new PruebaDataContext();

@@ -17,7 +17,7 @@ const createList = (data) => {
     content += "<tr>"
     content += "<td>ID GRADOSECCION</td>"
     content += "<td>NOMBRE GRADO</td>"
-    content += "<td>NOMBRE SECCION/td>"
+    content += "<td>NOMBRE SECCION</td>"
     content += "</tr>"
     content += "</thead>"
 
@@ -105,6 +105,27 @@ const sendData = () => {
     } else {
         mandatoryData()
     }
+}
+
+const deleteRegister = (id) => {
+    $.get(`GradoSeccion/deleteData/?id=${id}`, data => {
+        if (data !== 0) {
+            $.get("GradoSeccion/listGradoSeccion", (data) => {
+                createList(data)
+            })
+            $.get("GradoSeccion/listSection", (data) => {
+                populateCbo(data, document.getElementById("cbo-seccion"), true)
+            })
+
+            $.get("GradoSeccion/listGrade", (data) => {
+                populateCbo(data, document.getElementById("cbo-grado"), true)
+            })
+            alert("Éxito")
+            document.getElementById("btn-cancel").click()
+        } else {
+            alert("Error")
+         }
+    })
 }
 
 const deleteInputs = () => {
