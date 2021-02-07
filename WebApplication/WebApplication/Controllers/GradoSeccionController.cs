@@ -34,24 +34,31 @@ namespace WebApplication.Controllers
         public JsonResult recoverData(int id)
         {
             PruebaDataContext bd = new PruebaDataContext();
-            GradoSeccion list = bd.GradoSeccion.Where(p => p.IID.Equals(id)).First();
+            var list = bd.GradoSeccion.Where(p => p.IID.Equals(id))
+                .Select(p => new
+                {
+                    p.IID,
+                    p.IIDGRADO,
+                    p.IIDSECCION
+                })
+                .First();
             return Json(list, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult listSections ()
+        public JsonResult listSection ()
         {
             PruebaDataContext bd = new PruebaDataContext();
             var list = bd.Seccion.Where(p => p.BHABILITADO.Equals(1))
-                .Select(p => new { p.NOMBRE, p.IIDSECCION }).ToList();
+                .Select(p => new { p.NOMBRE, IID = p.IIDSECCION }).ToList();
 
             return Json(list, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult listGrades ()
+        public JsonResult listGrade ()
         {
             PruebaDataContext bd = new PruebaDataContext();
             var list = bd.Grado.Where(p => p.BHABILITADO.Equals(1))
-                .Select(p => new { p.NOMBRE, p.IIDGRADO }).ToList();
+                .Select(p => new { p.NOMBRE, IID = p.IIDGRADO }).ToList();
 
             return Json(list, JsonRequestBehavior.AllowGet);
         }

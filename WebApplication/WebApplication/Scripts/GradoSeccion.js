@@ -2,6 +2,14 @@
     createList(data)
 })
 
+$.get("GradoSeccion/listSection", (data) => {
+    populateCbo(data, document.getElementById("cbo-seccion"), true)
+})
+
+$.get("GradoSeccion/listGrade", (data) => {
+    populateCbo(data, document.getElementById("cbo-grado"), true)
+})
+
 const createList = (data) => {
     let content = ""
     content += '<table class="table" id="table-gradoseccion">'
@@ -19,7 +27,7 @@ const createList = (data) => {
         content += `<td>${data[i].IID}</td>`
         content += `<td>${data[i].NOMBREGRADO}</td>`
         content += `<td>${data[i].NOMBRESECCION}</td>`
-        content += `<td><button class='btn btn-primary' onclick='openModal(${data[i].IIDDOCENTE})' data-toggle='modal' data-target='#myModal'>E</button><button class='btn btn-danger' onclick='deleteRegister(${data[i].IIDDOCENTE})'>X</button></td>`
+        content += `<td><button class='btn btn-primary' onclick='openModal(${data[i].IID})' data-toggle='modal' data-target='#myModal'>E</button><button class='btn btn-danger' onclick='deleteRegister(${data[i].IID})'>X</button></td>`
         content += "</tr>"
     }
     content += "</tbody>"
@@ -32,6 +40,22 @@ const createList = (data) => {
     )
 }
 
+const openModal = (id) => {
+    const controllers = document.getElementsByClassName("mandatory")
+    for (let i = 0; i < controllers.length; i++) {
+        controllers[i].parentNode.classList.remove("error")
+    }
+    if (id === 0) {
+        deleteInputs()
+    } else {
+        $.get(`GradoSeccion/recoverData/?id=${id}`, (data) => {
+            document.getElementById("txt-id-gradoseccion").value = data.IID
+            document.getElementById("cbo-grado").value = data.IIDGRADO
+            document.getElementById("cbo-seccion").value = data.IIDSECCION
+        })
+    }
+}
+
 const populateCbo = (data, control) => {
     let content
     content += "<option value='0'>--Seleccione--</option>"
@@ -39,4 +63,25 @@ const populateCbo = (data, control) => {
         content += `<option value="${data[i].IID}">${data[i].NOMBRE}</option>`
     }
     control.innerHTML = content
+}
+
+const deleteInputs = () => {
+    const controllers = document.getElementsByClassName("delete-info")
+    for (let i = 0; i < controllers.length; i++) {
+        controllers[i].value = ""
+    }
+}
+
+const mandatoryData = () => {
+    let success = true
+    const controllers = document.getElementsByClassName("mandatory")
+    for (let i = 0; i < controllers.length; i++) {
+        if (controllers[i].value == "") {
+            controllers[i].parentNode.classList.add("error")
+            success = false
+        } else {
+            controllers[i].parentNode.classList.remove("error")
+        }
+    }
+    return success
 }
